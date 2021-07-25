@@ -6,7 +6,7 @@ module Funge
   require 'set'
   require 'logging'
   require_relative 'array'
-  require_relative 'vector'
+  require_relative 'funge/vector'
   require_relative 'object'
   require_relative 'funge/direction'
   require_relative 'funge/stack'
