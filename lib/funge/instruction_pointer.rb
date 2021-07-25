@@ -60,6 +60,7 @@ module Funge
     # @param state [State]
     def tick(state)
       return advance(state) if comment_mode && state[@pos] != ';'
+
       if string_mode && state[@pos] != '"'
         toss << state[@pos].ord
       else
@@ -70,6 +71,7 @@ module Funge
           Instruction.parse('r').execute(self, state)
         end
       end
+
       advance(state)
     end
 
@@ -77,20 +79,24 @@ module Funge
     # (0, 0, 1), advances 1 step in the Z direction.
     #
     # @param state [State]
+    # @return [InstructionPointer] self
     def advance(state)
       @pos = @pos + @delta
+      @pos = Vector.new(@pos.x % @size.x, @pos.y % @size.y, @pos.z % @size.z)
+
       self
-      # TODO handle wrapping
     end
 
     # Retreats the instruction pointer by as many steps as the current delta. That is, if the current delta is
     # (0, 0, 1), retreats 1 step in the Z direction.
     #
     # @param state [State]
+    # @return [InstructionPointer] self
     def retreat(state)
       @pos = @pos - @delta
+      @pos = Vector.new(@pos.x % @size.x, @pos.y % @size.y, @pos.z % @size.z)
+
       self
-      # TODO handle wrapping
     end
 
     # Turns the delta on the Z-plane in the given direction.
@@ -107,6 +113,7 @@ module Funge
       direction = direction <=> 0
       delta.x = direction * -delta.y
       delta.y = direction * delta.x
+
       self
     end
   end
