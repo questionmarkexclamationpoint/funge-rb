@@ -7,5 +7,6 @@ Gem::Specification.new do |spec|
   spec.authors     = ["questionmarkexclamationpoint"]
   spec.email       = 'questionmarkexclamationpoint@github.com'
   spec.files       = ["lib/**/*"]
+  spec.executables = ['bin/funge-rb']
   spec.homepage    = 'https://github.com/questionmarkexclamationpoint'
 end
