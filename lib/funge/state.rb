@@ -7,14 +7,18 @@ module Funge
                 :instruction_pointers
 
     def initialize(funge_space)
-      @running = true
-      @funge_space = funge_space
-      height = @funge_space.max_by(&:size).size
-      width = @funge_space.flatten(1).max_by(&:size).size
-      @size = Vector.new(width, height, @funge_space.size).freeze
-      @funge_space.each do |page|
-        page.each{|line| (width - line.size).times{ line << ' ' }}
-        (height - page.size).times{ page << Array.new(width){ ' ' }}
+      @funge_space = [[[]]]
+      @size = Vector.new(
+          funge_space.flatten(1).max_by(&:size).size,
+          funge_space.max_by(&:size).size,
+          funge_space.size
+      ).freeze
+      @size.z.times do |z|
+        @size.y.times do |y|
+          @size.x.times do |x|
+            @funge_space[z][y][x] = funge_space[z][y][x] || ' '
+          end
+        end
       end
       @instruction_pointers = [InstructionPointer.new]
     end
