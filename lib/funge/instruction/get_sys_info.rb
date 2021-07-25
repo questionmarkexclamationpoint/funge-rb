@@ -13,13 +13,13 @@ module Funge
           ip_stack_stack_size(ip),
           time,
           date,
-          ip_greatest_point(ip),
-          ip_storage_offset(ip),
-          ip_delta(ip),
-          ip_pos(ip),
-          ip_team_id(ip),
+          greatest_point(state),
+          ip_storage_offset(ip, state),
+          ip_delta(ip, state),
+          ip_pos(ip, state),
+          ip_team_id(ip, state),
           ip_id(ip),
-          vector_size,
+          vector_size(state),
           separator,
           operating_paradigm_id,
           version,
@@ -70,6 +70,7 @@ module Funge
             version += c.to_i
           end
         end
+
         version
       end
 
@@ -101,6 +102,7 @@ module Funge
         v.push(ip.pos.z) if state.dimensions >= 3
         v.push(ip.pos.y) if state.dimensions >= 2
         v.push(ip.pos.x)
+
         v
       end
 
@@ -109,6 +111,7 @@ module Funge
         v.push(ip.delta.z) if state.dimensions >= 3
         v.push(ip.delta.y) if state.dimensions >= 2
         v.push(ip.delta.x)
+
         v
       end
 
@@ -117,11 +120,17 @@ module Funge
         v.push(ip.storage_offset.z) if state.dimensions >= 3
         v.push(ip.storage_offset.y) if state.dimensions >= 2
         v.push(ip.storage_offset.x)
+
         v
       end
 
       def greatest_point(state)
+        v = []
+        v.push(state.size.z) if state.dimensions >= 3
+        v.push(state.size.y) if state.dimensions >= 2
+        v.push(state.size.x)
 
+        v
       end
 
       def date
@@ -139,15 +148,19 @@ module Funge
       end
 
       def ip_stack_sizes(ip)
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        ip.stack_stack.map(&:size)
       end
 
       def args
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        ARGV.map do |arg|
+          arg.chars.map(&:ord) << 0
+        end.flatten << 0
       end
 
       def env
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        ENV.to_a.flatten.map do |env|
+          env.chars.map(&:ord) << 0
+        end.flatten << 0
       end
     end
   end
