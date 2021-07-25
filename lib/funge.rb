@@ -15,8 +15,8 @@ module Funge
   require_relative 'funge/state'
 
   VERSION = '0.0.1-dev'
-  LOGGER = Logging.logger[Funge]
 
+  LOGGER = Logging.logger[Funge]
   LOGGER.add_appenders(Logging.appenders.stderr)
 
   def self.parse(string)
