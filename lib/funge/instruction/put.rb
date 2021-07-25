@@ -5,9 +5,9 @@ module Funge
       CHARACTERS = 'p'.freeze
 
       def execute(ip, state)
-        vec = state.pop_vector(state.dimensions) + ip.storage_offset
+        vec = ip.toss.pop_vector(state.dimensions) + ip.storage_offset
         val = ip.toss.pop
-        state[vec] = val
+        state[vec] = val.chr
       end
     end
   end
