@@ -32,6 +32,6 @@ class Array
   end
 
   def ljust(to_size, value)
-    dup.ljust(to_size, value)
+    dup.ljust!(to_size, value)
   end
 end
