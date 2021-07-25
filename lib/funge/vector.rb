@@ -5,6 +5,10 @@ module Funge
       super
     end
 
+    def to_s
+      "(#{x}, #{y}, #{z})"
+    end
+
     def +(other)
       binary_operation(other, :+)
     end
