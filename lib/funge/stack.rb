@@ -8,7 +8,7 @@ module Funge
     # @return [Integer, Array(Integer)] the first n elements from the stack, in top to bottom order, as an array if
     # n > 1, or as an integer if n == 1
     def pop(n = 1)
-      ret = 1.upto(n).map{ super() || 0 }.rjust(n, 0)
+      ret = 1.upto(n).map{ super() || 0 }.ljust(n, 0)
       ret = ret.first if n == 1
       ret
     end
