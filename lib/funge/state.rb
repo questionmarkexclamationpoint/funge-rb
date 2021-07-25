@@ -14,7 +14,9 @@ module Funge
           funge_space.size
       ).freeze
       @size.z.times do |z|
+        @funge_space[z] ||= []
         @size.y.times do |y|
+          @funge_space[z][y] ||= []
           @size.x.times do |x|
             @funge_space[z][y][x] = funge_space[z][y][x] || ' '
           end
