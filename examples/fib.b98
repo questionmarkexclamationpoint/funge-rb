@@ -1,0 +1,21 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>v   >>v<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+v"Input first seed: "p730 <   ^ 2                                           ^
+> ,,,,,,,,,,,,,,,,,, &07p v   ^ 7                                           ^
+v"Input second seed: "    <   ^ g                                           ^
+> ,,,,,,,,,,,,,,,,,,,&17p v   ^ !                                           ^
+v"Input n: "              <   ^ v                                           ^
+> ,,,,,,,,,        &2-27p     ^ v                                           ^
+abin                            v                                           ^
+v<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<_ ;Get the value at (1, n); 37g7g   v       ^
+v                               v                                   <       ^
+v                               > ;Get the value at (1, !n); 37g!7g v       ^
+v                               v                                   <       ^
+v                               > ;Add the two numbers together; +  v       ^
+v                               v                                   <       ^
+v                               > ;Store result in (1, n); 37g7p    v       ^
+v                               v                                   <       ^
+v                               > ;Flip n; 37g!37p                  v       ^
+v                               v                                   <       ^
+v                               > ;Subtract 1 from i; 27g1-27p      >>>>>>>>^
+v
+> ;Get the value at (1, !n), print, stop; 37g!7g.a,@
