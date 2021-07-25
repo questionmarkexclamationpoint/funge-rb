@@ -4,11 +4,12 @@ module Funge
                   :delta,
                   :pos,
                   :comment_mode,
-                  :storage_offset,
-                  :fingerprints
+                  :storage_offset
 
     attr_reader :id,
-                :stack_stack
+                :stack_stack,
+                :fingerprints,
+                :fingerprint_locations
 
     @@current_id = -1
 
@@ -19,8 +20,9 @@ module Funge
       @string_mode = false
       @comment_mode = false
       @storage_offset = Vector.new
-      @fingerprints = {}
-      @id = @current_id += 1
+      @fingerprints = []
+      @fingerprint_locations = {}
+      @id = @@current_id += 1
     end
 
     def toss
@@ -69,7 +71,10 @@ module Funge
         toss << state[@pos].ord
       else
         begin
-          curr(state).execute(self, state)
+          instruction = curr(state)
+          LOGGER.debug("\n" + state.funge_space[0].map(&:join).join("\n"))
+          LOGGER.debug("#{id}: #{@pos}/#{state[@pos]}/#{instruction.class}/#{toss}")
+          instruction.execute(self, state)
         rescue NotImplementedError => e
           Funge::LOGGER.warn("#{e.message}\n#{e.backtrace.map{|v|"\t#{v}"}.join("\n")}")
           Instruction.parse('r').execute(self, state)
@@ -85,8 +90,7 @@ module Funge
     # @param state [State]
     # @return [InstructionPointer] self
     def advance(state)
-      @pos = @pos + @delta
-      @pos = Vector.new(@pos.x % @size.x, @pos.y % @size.y, @pos.z % @size.z)
+      @pos = (@pos + @delta) % state.size
 
       self
     end
@@ -97,8 +101,7 @@ module Funge
     # @param state [State]
     # @return [InstructionPointer] self
     def retreat(state)
-      @pos = @pos - @delta
-      @pos = Vector.new(@pos.x % @size.x, @pos.y % @size.y, @pos.z % @size.z)
+      @pos = (@pos - @delta) % @size
 
       self
     end
