@@ -17,8 +17,8 @@ module Funge
       push(v)
     end
 
-    def push(v)
-      raise ArgumentError.new("Can only push Integers to #{Stack}") unless v.is_a?(Integer)
+    def push(*v)
+      raise ArgumentError.new("Can only push Integers to #{Stack}") unless v.all?{ |i| i.is_a?(Integer) }
 
       super
     end
