@@ -63,7 +63,12 @@ module Funge
       if string_mode && state[@pos] != '"'
         toss << state[@pos].ord
       else
-        curr(state).execute(self, state)
+        begin
+          curr(state).execute(self, state)
+        rescue NotImplementedError => e
+          Funge::LOGGER.warn("#{e.message}\n#{e.backtrace.map{|v|"\t#{v}"}.join("\n")}")
+          Instruction.parse('r').execute(self, state)
+        end
       end
       advance(state)
     end
@@ -92,9 +97,9 @@ module Funge
     #
     # If direction is 0, nothing is changed.
     #
-    # If direction is >0, turns right on the Z-plane.
+    # If direction is positive, turns right on the Z-plane.
     #
-    # If direction is <0, turns left on the Z-plane.
+    # If direction is negative, turns left on the Z-plane.
     # @param direction [Numeric] the direction to turn the delta in
     # @return [InstructionPointer] self
     def turn(direction)
