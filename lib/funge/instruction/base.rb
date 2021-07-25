@@ -9,6 +9,12 @@ module Funge
       def execute(ip, state)
         raise NotImplementedError.new
       end
+
+      protected
+
+      def reflect(ip)
+        ip.delta = ip.delta * -1
+      end
     end
   end
 end
