@@ -44,11 +44,12 @@ module Funge
       private
 
       def flags
-        # 0001 - t is implemented
-        # 0010 - i is implemented
-        # 0100 - o is implemented
-        # 1000 - = is implemented
-        0b1111
+        # 00001 - t is implemented
+        # 00010 - i is implemented
+        # 00100 - o is implemented
+        # 01000 - = is implemented
+        # 00000 - unclear what last bit does? TODO
+        0b01111
       end
 
       def cell_size
@@ -57,47 +58,70 @@ module Funge
       end
 
       def handprint
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        # at some point, the hash of 'funge-rb' in ruby
+        3222222126255942236
       end
 
       def version
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        version = 0
+        Funge::VERSION.chars.each do |c|
+          if ('0'..'9').include?(c)
+            version *= 10
+            version += c.to_i
+          end
+        end
+        version
       end
 
       def operating_paradigm_id
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        # uses ruby's #system, which uses the shell that started that ruby program
+        3
       end
 
       def separator
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+        # Ruby will take a slash no matter what.
+        '/'.ord
       end
 
-      def vector_size
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+      def vector_size(state)
+        state.dimensions
       end
 
       def ip_id(ip)
         ip.id
       end
 
-      def ip_team_id(ip)
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+      def ip_team_id
+        # teams not relevant
+        0
       end
 
-      def ip_pos(ip)
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+      def ip_pos(ip, state)
+        v = []
+        v.push(ip.pos.z) if state.dimensions >= 3
+        v.push(ip.pos.y) if state.dimensions >= 2
+        v.push(ip.pos.x)
+        v
       end
 
-      def ip_delta(ip)
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+      def ip_delta(ip, state)
+        v = []
+        v.push(ip.delta.z) if state.dimensions >= 3
+        v.push(ip.delta.y) if state.dimensions >= 2
+        v.push(ip.delta.x)
+        v
       end
 
-      def ip_storage_offset(ip)
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+      def ip_storage_offset(ip, state)
+        v = []
+        v.push(ip.storage_offset.z) if state.dimensions >= 3
+        v.push(ip.storage_offset.y) if state.dimensions >= 2
+        v.push(ip.storage_offset.x)
+        v
       end
 
-      def ip_greatest_point(ip)
-        raise NotImplementedError.new("#{GetSysInfo} is not implemented") # TODO
+      def greatest_point(state)
+
       end
 
       def date
