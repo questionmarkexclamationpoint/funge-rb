@@ -6,7 +6,7 @@ module Funge
 
       def execute(ip, state)
         copy = ip.deep_dup
-        copy.delta = copy.delta * -1
+        reverse(copy)
         state.instruction_pointers.unshift(copy)
       end
     end
