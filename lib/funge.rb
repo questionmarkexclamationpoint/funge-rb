@@ -18,6 +18,7 @@ module Funge
 
   LOGGER = Logging.logger[Funge]
   LOGGER.add_appenders(Logging.appenders.stderr)
+  LOGGER.level = :warn
 
   def self.parse(string)
     string.split("\f").map{ |page| page.lines.map{ |line| line.gsub(/\r\n/, '').chars }}
