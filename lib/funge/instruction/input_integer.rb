@@ -5,8 +5,8 @@ module Funge
       CHARACTERS = '&'.freeze
 
       def execute(ip, state)
-        input = /\d+/.match(gets)
-        ip.toss << input.nil? ? 0 : input[0]
+        input = /\d+/.match(STDIN.gets)
+        ip.toss << (input.nil? ? 0 : input[0].to_i)
       end
     end
   end

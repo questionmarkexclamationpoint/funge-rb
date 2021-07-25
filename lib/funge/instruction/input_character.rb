@@ -5,7 +5,7 @@ module Funge
       CHARACTERS = '~'.freeze
 
       def execute(ip, state)
-        ip.toss << gets[0].ord
+        ip.toss << STDIN.gets[0].ord
       end
     end
   end
