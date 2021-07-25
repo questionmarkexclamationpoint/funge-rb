@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Stops the current instruction pointer
     class Stop < Base
       CHARACTERS = '@'.freeze
 

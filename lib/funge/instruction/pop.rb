@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Pops a cell of the stack
     class Pop < Base
       CHARACTERS = '$'.freeze
 

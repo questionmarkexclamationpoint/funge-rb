@@ -1,5 +1,7 @@
 module Funge
   module Instruction
+    # Turns on comment mode for the instruction pointer. No subsequent instructions will be executed until another ; is
+    # encountered.
     class JumpOver < Base
       CHARACTERS = ';'.freeze
 

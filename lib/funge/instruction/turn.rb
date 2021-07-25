@@ -1,5 +1,7 @@
 module Funge
   module Instruction
+    # Rotates the instruction pointer 90 degrees. If [, rotates the delta left on the Z-plane. If ], rotates the delta
+    # right on the Z-plane.
     class Turn < Base
       CHARACTERS = ['[', ']'].freeze
 

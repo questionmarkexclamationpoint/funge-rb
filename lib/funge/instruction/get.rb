@@ -1,5 +1,7 @@
 module Funge
   module Instruction
+    # Pops a vector V off the stack, then pushes the value in funge space at V + the instruction pointer's storage
+    # offset onto the stack
     class Get < Base
       CHARACTERS = 'g'.freeze
 

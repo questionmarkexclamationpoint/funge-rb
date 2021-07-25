@@ -1,6 +1,6 @@
 module Funge
   module Instruction
-    # Pops a string off the stack, then executes that string as system code, pusbing the exit code of that execution
+    # Pops a string off the stack, then executes that string as system code, pushing the exit code of that execution
     # onto the stack.
     class Execute < Base
       CHARACTERS = '='.freeze

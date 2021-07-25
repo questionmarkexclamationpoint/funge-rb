@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Swaps the two topmost cells on the stack
     class Swap < BinaryOperationBase
       CHARACTERS = '\\'.freeze
 

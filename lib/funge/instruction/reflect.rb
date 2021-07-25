@@ -4,7 +4,7 @@ module Funge
       CHARACTERS = 'r'.freeze
 
       def execute(ip, state)
-        ip.delta = ip.delta * -1
+        reflect(ip)
       end
     end
   end

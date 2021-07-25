@@ -1,5 +1,7 @@
 module Funge
   module Instruction
+    # Pops one cell, n, off the stack, then pushes a new stack onto the stack stack, and transfers n elements from the
+    # previous stack to the current stack, preserving the order of the elements.
     class BeginBlock < Base
       CHARACTERS = '{'.freeze
 

@@ -1,5 +1,7 @@
 module Funge
   module Instruction
+    # Advances the instruction pointer one step, then pushes the ordinal value of the character at current location of
+    # the instruction pointer onto the stack.
     class FetchCharacter < Base
       CHARACTERS = '\''.freeze
 

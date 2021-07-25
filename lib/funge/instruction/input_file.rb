@@ -1,5 +1,9 @@
 module Funge
   module Instruction
+    # Pops a 0-terminated string s from the stack, then a flags cell f, then a vector V. If a file at location s can be
+    # opened for reading, it is loaded into funge space at location V. If the least significant bit of f is high, treats
+    # the file as binary and inserts new lines and carriage returns as characters rather than wrapping. If the file
+    # cannot be opened, acts like reflect.
     class InputFile < Base
       CHARACTERS = 'i'.freeze
 

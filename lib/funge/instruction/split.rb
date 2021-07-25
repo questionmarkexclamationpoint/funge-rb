@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Duplicates the current instruction pointer and adds it to the state's instruction pointer.
     class Split < Base
       CHARACTERS = 't'.freeze
 

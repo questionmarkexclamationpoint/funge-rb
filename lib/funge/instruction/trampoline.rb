@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Skips the next location
     class Trampoline < Base
       CHARACTERS = '#'.freeze
 

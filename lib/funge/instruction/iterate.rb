@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Pops a cell n off the stack, then iterates the next instruction n times in a single tick.
     class Iterate < Base
       CHARACTERS = 'k'.freeze
 

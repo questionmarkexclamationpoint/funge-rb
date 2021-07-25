@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Pushes the given base 16 digit onto the stack
     class Push < Base
       CHARACTERS = (('0'..'9').to_a + ('a'..'f').to_a).freeze
 

@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Pushes the current topmost element of the stack onto the stack
     class Duplicate < Base
       CHARACTERS = ':'.freeze
 

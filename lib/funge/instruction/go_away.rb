@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Redirects the instruction pointer in a random cardinal direction
     class GoAway < Base
       CHARACTERS = '?'.freeze
 

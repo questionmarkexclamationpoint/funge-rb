@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Pops a character off the stack and places it in the next location
     class StoreCharacter < Base
       CHARACTERS = 's'.freeze
 

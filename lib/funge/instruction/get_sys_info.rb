@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Pushes far more information than you would ever want to know about the system onto the stack.
     class GetSysInfo < Base
       CHARACTERS = 'y'.freeze
 

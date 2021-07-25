@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Redirects the instruction pointer in a specific cardinal direction.
     class GoDirection < Base
       CHARACTERS = ['^', '>', 'v', '<', 'h', 'l'].freeze
 

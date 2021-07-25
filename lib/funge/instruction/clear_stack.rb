@@ -1,5 +1,6 @@
 module Funge
   module Instruction
+    # Empties the current stack
     class ClearStack < Base
       CHARACTERS = 'n'.freeze
 
