@@ -27,6 +27,10 @@ module Funge
       @stack_stack.last
     end
 
+    def soss
+      @stack_stack[-2]
+    end
+
     def stack
       toss
     end
