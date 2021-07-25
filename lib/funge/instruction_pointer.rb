@@ -68,7 +68,16 @@ module Funge
       return advance(state) if comment_mode && state[@pos] != ';'
 
       if string_mode && state[@pos] != '"'
-        toss << state[@pos].ord
+        val = state[@pos].ord
+        while val == ' '
+          advance(state)
+          val = state[@pos].ord
+          if val != ' '
+            retreat(state)
+            val = ' '
+          end
+        end
+        toss << val
       else
         begin
           instruction = curr(state)
